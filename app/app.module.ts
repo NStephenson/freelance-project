@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { DocumentsComponent } from './documents/documents.component';
 import { ProposalListComponent } from './proposals/proposal-list.component';
 import { ProposalNewComponent } from './proposals/proposal-new.component';
+import { ProposalShowComponent } from './proposals/proposal-show.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { ProposalNewComponent } from './proposals/proposal-new.component';
     HomepageComponent,
     AppComponent,
     ProposalListComponent,
-    ProposalNewComponent
+    ProposalNewComponent,
+    ProposalShowComponent
   ],
   bootstrap: [AppComponent]
 })
