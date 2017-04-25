@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { Proposal }  from './proposal'
 import { Observable } from 'rxjs/Rx'
 import { ProposalService } from './proposal.service'
@@ -10,7 +10,7 @@ import { ProposalService } from './proposal.service'
   providers: [ ProposalService ]
 })
 
-export class ProposalListComponent {
+export class ProposalListComponent implements OnInit {
   proposals: Proposal[];
   errorMessage: string;
   mode = "Observable";
