@@ -5,28 +5,38 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var proposal_1 = require("./proposal");
+var Rx_1 = require("rxjs/Rx");
+var proposal_service_1 = require("./proposal.service");
 var ProposalListComponent = (function () {
-    function ProposalListComponent() {
-        this.proposalOne = new proposal_1.Proposal(15, "A Company", "https://portfolio.me.com", "Ruby on Rails", 50, 120, 15, "dog@dogs.com");
-        this.proposalDuex = new proposal_1.Proposal(16, "B Company", "https://portfolio.me.com", "Ruby on Rails", 60, 80, 10, "dog@dogs.com");
-        this.proposalDrei = new proposal_1.Proposal(17, "C Company", "https://portfolio.me.com", "Ruby on Rails", 55, 130, 25, "dog@dogs.com");
-        this.proposals = [
-            this.proposalOne,
-            this.proposalDuex,
-            this.proposalDrei
-        ];
+    function ProposalListComponent(proposalService) {
+        this.proposalService = proposalService;
+        this.mode = "Observable";
     }
+    ProposalListComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        var timer = Rx_1.Observable.timer(0, 5000);
+        timer.subscribe(function () { return _this.getProposals(); });
+    };
+    ProposalListComponent.prototype.getProposals = function () {
+        var _this = this;
+        this.proposalService.getProposals()
+            .subscribe(function (proposals) { return _this.proposals = proposals; }, function (error) { return _this.errorMessage = error; });
+    };
     return ProposalListComponent;
 }());
 ProposalListComponent = __decorate([
     core_1.Component({
         moduleId: module.id,
         selector: 'proposal-list',
-        templateUrl: 'proposal-list.component.html'
-    })
+        templateUrl: 'proposal-list.component.html',
+        providers: [proposal_service_1.ProposalService]
+    }),
+    __metadata("design:paramtypes", [proposal_service_1.ProposalService])
 ], ProposalListComponent);
 exports.ProposalListComponent = ProposalListComponent;
 //# sourceMappingURL=proposal-list.component.js.map

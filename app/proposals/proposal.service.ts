@@ -7,8 +7,8 @@ import { Proposal } from './proposal'
 
 
 export class ProposalService{
-  private proposalsUrl: string = "http://localhost:3002/propsals.json";
-
+  private proposalsUrl: string = "http://localhost:3002/proposals.json";
+ 
   constructor(
     private http: Http
   ){}

@@ -15,7 +15,7 @@ var Rx_1 = require("rxjs/Rx");
 var ProposalService = (function () {
     function ProposalService(http) {
         this.http = http;
-        this.proposalsUrl = "http://localhost:3002/propsals.json";
+        this.proposalsUrl = "http://localhost:3002/proposals.json";
     }
     ProposalService.prototype.getProposals = function () {
         return this.http.get(this.proposalsUrl)
