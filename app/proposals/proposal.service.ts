@@ -7,7 +7,7 @@ import { Proposal } from './proposal'
 
 
 export class ProposalService{
-  private proposalsUrl: string = "http://localhost:3002/proposals.json";
+  private proposalsUrl: string = "http://localhost:3002/proposals";
  
   constructor(
     private http: Http
@@ -15,6 +15,12 @@ export class ProposalService{
 
   getProposals(): Observable<Proposal[]> {
     return this.http.get(this.proposalsUrl)
+                    .map((response: Response) => <Proposal[]>response.json())
+                    .catch(this.handleError)
+  }
+
+  getProposal(id: number): Observable<Proposal[]> {
+    return this.http.get(this.proposalsUrl + `/${id}.json`)
                     .map((response: Response) => <Proposal[]>response.json())
                     .catch(this.handleError)
   }
