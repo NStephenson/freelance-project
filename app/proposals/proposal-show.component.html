@@ -1,6 +1,10 @@
 <div class="container">
-  <div class="card proposal-card">
-    <h1>Proposal Show</h1>
+  <div *ngIf="proposal" class="card proposal-card">
+    <h1>{{proposal.customer }}</h1>
+  </div>
+
+  <div *ngIf="errorMessage" class="card proposal-card">
+    <h1>{{ errorMessage }}</h1>
     <p>The id for this proposal is: {{id}}</p>
   </div>
 </div>
