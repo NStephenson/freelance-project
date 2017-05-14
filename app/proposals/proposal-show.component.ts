@@ -19,11 +19,12 @@ export class ProposalShowComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private http: Http,
-    private proposalService: ProposalService
+    private proposalService: ProposalService,
   ){}
 
   @Input()
-  proposal: Proposal; 
+  proposal: Proposal;
+  errorMessage: string; 
 
   ngOnInit(): void { 
     this.getProposal()
