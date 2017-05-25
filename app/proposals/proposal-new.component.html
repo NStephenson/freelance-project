@@ -67,6 +67,10 @@
           <input type="email" id="client_email" placeholder="bob@bob.com" name="client_email" #client_email="ngModel" [(ngModel)]="proposal.client_email" class="form-control" >
         </div>
       </form>
+
+      <button class="btn btn-outline-primary btn-lrg" [disabled]="!proposalForm.form.valid" [hidden]="submitted" type="submit">
+        Generate Proposal
+      </button>
       
     </div>
 

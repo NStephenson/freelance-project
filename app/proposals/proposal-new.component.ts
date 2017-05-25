@@ -9,5 +9,6 @@ import { Proposal } from './proposal'
 })
 
 export class ProposalNewComponent {
-  proposal: Proposal = new Proposal
+  proposal: Proposal = new Proposal;
+  submitted: boolean = false;
 }
